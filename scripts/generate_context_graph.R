@@ -21,7 +21,7 @@ generate_context_graph <- function() {
     list(id = "apuntes_dir", type = "notes", path = "apuntes", label = "Apuntes del Curso")
   )
   
-  tarea_files <- list.files("tareas", pattern = "^Tarea_[0-9]+\\.qmd$", full.names = TRUE)
+  tarea_files <- list.files("tareas", pattern = "^Tarea_[0-9]+\\.qmd$", recursive = TRUE, full.names = TRUE)
   for (tf in tarea_files) {
     bname <- basename(tf)
     tid <- paste0("tarea_", gsub("\\.qmd$", "", bname))

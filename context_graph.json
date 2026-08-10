@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-09T21:39:56Z",
+  "generated_at": "2026-08-09T21:42:46Z",
   "nodes": [
     {
       "id": "contrato_agente",
@@ -64,25 +64,25 @@
     {
       "id": "tarea_Tarea_1",
       "type": "tarea_qmd",
-      "path": "tareas/Tarea_1.qmd",
+      "path": "tareas/tarea_1/Tarea_1.qmd",
       "label": "Tarea_1.qmd"
     },
     {
       "id": "tarea_Tarea_3",
       "type": "tarea_qmd",
-      "path": "tareas/Tarea_3.qmd",
+      "path": "tareas/tarea_3/Tarea_3.qmd",
       "label": "Tarea_3.qmd"
     },
     {
       "id": "tarea_Tarea_4",
       "type": "tarea_qmd",
-      "path": "tareas/Tarea_4.qmd",
+      "path": "tareas/tarea_4/Tarea_4.qmd",
       "label": "Tarea_4.qmd"
     },
     {
       "id": "tarea_Tarea_5",
       "type": "tarea_qmd",
-      "path": "tareas/Tarea_5.qmd",
+      "path": "tareas/tarea_5/Tarea_5.qmd",
       "label": "Tarea_5.qmd"
     }
   ],

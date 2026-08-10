@@ -70,7 +70,7 @@ c) Prueba de hipótesis de la tasa de 1 defecto cada 100 metros.
 #| label: cargar-datos-fabric
 #| warning: false
 #| message: false
-fabric_path <- "../contenido_de_clase/data/fabric.txt"
+fabric_path <- "../../contenido_de_clase/data/fabric.txt"
 if (file.exists(fabric_path)) {
   fabric <- read.table(fabric_path, header = TRUE)
   head(fabric)

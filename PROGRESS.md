@@ -10,23 +10,24 @@
 ---
 
 ## Estado Actual
-- **Fase del Proyecto:** Documentos HTML y PDF generados e integrados en GitHub para todas las tareas (`Tarea_1`, `Tarea_3`, `Tarea_4`, `Tarea_5`). Formato visual y tipográfico optimizado con LuaLaTeX y estilos responsivos.
+- **Fase del Proyecto:** Tareas estructuradas en subdirectorios individuales (`tareas/tarea_1/`, `tareas/tarea_3/`, `tareas/tarea_4/`, `tareas/tarea_5/`). Entregables HTML renderizados y abiertos en Safari para revisión visual.
 
 ---
 
 ## Registro de Actividades y Decisiones
 
-### [2026-08-09] Generación e Integración de Formatos HTML y PDF
+### [2026-08-09] Reestructuración en Subcarpetas y Apertura en Safari
 
-1. **Configuración de Renderizado Quarto Impecable**:
-   - YAML configurado con tipografía `cosmo`, tabla de contenidos numerada, `embed-resources: true` para HTML autosuficiente.
-   - Para PDF: Margen exacto de 25mm (`geometry`), paquetes `amsmath`, `microtype`, encabezado elegante `fancyhdr` con tu nombre e ID en el header de cada página y notación LaTeX profesional.
-2. **Generación con LuaLaTeX y Pandoc**:
-   - Se compilaron exitosamente las versiones HTML y PDF de:
-     - `tareas/Tarea_1.qmd` -> `Tarea_1.html` & `Tarea_1.pdf`
-     - `tareas/Tarea_3.qmd` -> `Tarea_3.html` & `Tarea_3.pdf`
-     - `tareas/Tarea_4.qmd` -> `Tarea_4.html` & `Tarea_4.pdf`
-     - `tareas/Tarea_5.qmd` -> `Tarea_5.html` & `Tarea_5.pdf`
+1. **Creación de Subdirectorios**:
+   - Cada tarea ahora cuenta con su subcarpeta independiente:
+     - `tareas/tarea_1/`: `Tarea_1.qmd`, `Tarea_1.html`, `Tarea_1.pdf`
+     - `tareas/tarea_3/`: `Tarea_3.qmd`, `Tarea_3.html`, `Tarea_3.pdf`
+     - `tareas/tarea_4/`: `Tarea_4.qmd`, `Tarea_4.html`, `Tarea_4.pdf`
+     - `tareas/tarea_5/`: `Tarea_5.qmd`, `Tarea_5.html`, `Tarea_5.pdf`
+
+2. **Re-renderizado y Visualización**:
+   - Se ajustaron las rutas relativas de carga de datos (`../../contenido_de_clase/data/...`).
+   - Se compilaron todas las tareas y se abrieron los 4 archivos HTML automáticamente en Safari.
 
 3. **Publicación y Sincronización en GitHub**:
-   - `git commit` y `git push` ejecutados hacia `origin/main`.
+   - Grafo de contexto `context_graph.json` y `heartbeat.json` actualizados.

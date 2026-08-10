@@ -28,10 +28,10 @@
     "task": "Reorganización de nomenclatura de tareas a Tarea_<numero>.qmd y generación de .gitignore estándar",
     "files_affected": [
       ".gitignore",
-      "tareas/Tarea_1.qmd",
-      "tareas/Tarea_3.qmd",
-      "tareas/Tarea_4.qmd",
-      "tareas/Tarea_5.qmd"
+      "tareas/tarea_1/Tarea_1.qmd",
+      "tareas/tarea_3/Tarea_3.qmd",
+      "tareas/tarea_4/Tarea_4.qmd",
+      "tareas/tarea_5/Tarea_5.qmd"
     ],
     "status": "completado"
   },
@@ -54,13 +54,13 @@
     "status": "completado"
   },
   {
-    "timestamp": "2026-08-09T21:39:50Z",
-    "task": "Generación e integración de renderizados HTML y PDF de alta calidad para todas las tareas en tareas/",
+    "timestamp": "2026-08-09T21:42:00Z",
+    "task": "Creación de subcarpetas por tarea (tareas/tarea_X/), re-renderizado de entregables y apertura en Safari",
     "files_affected": [
-      "tareas/Tarea_1.html", "tareas/Tarea_1.pdf",
-      "tareas/Tarea_3.html", "tareas/Tarea_3.pdf",
-      "tareas/Tarea_4.html", "tareas/Tarea_4.pdf",
-      "tareas/Tarea_5.html", "tareas/Tarea_5.pdf"
+      "tareas/tarea_1/",
+      "tareas/tarea_3/",
+      "tareas/tarea_4/",
+      "tareas/tarea_5/"
     ],
     "status": "completado"
   }

@@ -69,7 +69,7 @@ para calcular los intervalos de confianza del 95% de las siguientes razones de m
 #| label: cargar-datos-neuro
 #| warning: false
 #| message: false
-neuro_data_path <- "../contenido_de_clase/data/neuro.txt"
+neuro_data_path <- "../../contenido_de_clase/data/neuro.txt"
 if (file.exists(neuro_data_path)) {
   neuro <- read.table(neuro_data_path, header = TRUE)
   head(neuro)
