@@ -1,0 +1,176 @@
+{
+  "generated_at": "2026-08-09T21:23:50Z",
+  "nodes": [
+    {
+      "id": "contrato_agente",
+      "type": "contract",
+      "path": "contrato_agente.md",
+      "label": "Contrato de Agente"
+    },
+    {
+      "id": "agents_rules",
+      "type": "rules",
+      "path": ".agents/AGENTS.md",
+      "label": "Reglas de Agente"
+    },
+    {
+      "id": "progress_log",
+      "type": "log",
+      "path": "PROGRESS.md",
+      "label": "Bitácora de Progreso"
+    },
+    {
+      "id": "heartbeat_log",
+      "type": "log",
+      "path": "heartbeat.json",
+      "label": "Heartbeat Log"
+    },
+    {
+      "id": "gitignore",
+      "type": "config",
+      "path": ".gitignore",
+      "label": "Git Ignore"
+    },
+    {
+      "id": "ejercicios_pdf",
+      "type": "homework_source",
+      "path": "contenido_de_clase/requerimientos_tareas/Ejercicios_2026.pdf",
+      "label": "Ejercicios 2026 PDF"
+    },
+    {
+      "id": "lectures_dir",
+      "type": "knowledge_source",
+      "path": "contenido_de_clase/lectures",
+      "label": "Lecturas de Clase"
+    },
+    {
+      "id": "codigos_dir",
+      "type": "knowledge_source",
+      "path": "contenido_de_clase/codigos",
+      "label": "Códigos de Clase"
+    },
+    {
+      "id": "data_dir",
+      "type": "data_source",
+      "path": "contenido_de_clase/data",
+      "label": "Datos de Clase"
+    },
+    {
+      "id": "apuntes_dir",
+      "type": "notes",
+      "path": "apuntes",
+      "label": "Apuntes del Curso"
+    },
+    {
+      "id": "tarea_Tarea_1",
+      "type": "tarea_qmd",
+      "path": "tareas/Tarea_1.qmd",
+      "label": "Tarea_1.qmd"
+    },
+    {
+      "id": "tarea_Tarea_3",
+      "type": "tarea_qmd",
+      "path": "tareas/Tarea_3.qmd",
+      "label": "Tarea_3.qmd"
+    },
+    {
+      "id": "tarea_Tarea_4",
+      "type": "tarea_qmd",
+      "path": "tareas/Tarea_4.qmd",
+      "label": "Tarea_4.qmd"
+    },
+    {
+      "id": "tarea_Tarea_5",
+      "type": "tarea_qmd",
+      "path": "tareas/Tarea_5.qmd",
+      "label": "Tarea_5.qmd"
+    }
+  ],
+  "edges": [
+    {
+      "source": "contrato_agente",
+      "target": "agents_rules",
+      "relation": "governs"
+    },
+    {
+      "source": "contrato_agente",
+      "target": "heartbeat_log",
+      "relation": "mandates"
+    },
+    {
+      "source": "contrato_agente",
+      "target": "progress_log",
+      "relation": "mandates"
+    },
+    {
+      "source": "ejercicios_pdf",
+      "target": "lectures_dir",
+      "relation": "resolved_using"
+    },
+    {
+      "source": "ejercicios_pdf",
+      "target": "codigos_dir",
+      "relation": "resolved_using"
+    },
+    {
+      "source": "tarea_Tarea_1",
+      "target": "ejercicios_pdf",
+      "relation": "solves"
+    },
+    {
+      "source": "tarea_Tarea_1",
+      "target": "lectures_dir",
+      "relation": "references"
+    },
+    {
+      "source": "tarea_Tarea_1",
+      "target": "data_dir",
+      "relation": "uses_data"
+    },
+    {
+      "source": "tarea_Tarea_3",
+      "target": "ejercicios_pdf",
+      "relation": "solves"
+    },
+    {
+      "source": "tarea_Tarea_3",
+      "target": "lectures_dir",
+      "relation": "references"
+    },
+    {
+      "source": "tarea_Tarea_3",
+      "target": "data_dir",
+      "relation": "uses_data"
+    },
+    {
+      "source": "tarea_Tarea_4",
+      "target": "ejercicios_pdf",
+      "relation": "solves"
+    },
+    {
+      "source": "tarea_Tarea_4",
+      "target": "lectures_dir",
+      "relation": "references"
+    },
+    {
+      "source": "tarea_Tarea_4",
+      "target": "data_dir",
+      "relation": "uses_data"
+    },
+    {
+      "source": "tarea_Tarea_5",
+      "target": "ejercicios_pdf",
+      "relation": "solves"
+    },
+    {
+      "source": "tarea_Tarea_5",
+      "target": "lectures_dir",
+      "relation": "references"
+    },
+    {
+      "source": "tarea_Tarea_5",
+      "target": "data_dir",
+      "relation": "uses_data"
+    }
+  ]
+}

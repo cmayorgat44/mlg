@@ -1,0 +1,60 @@
+---
+title: "Tarea 5 - Modelos Log-Lineales"
+subtitle: "MAT5508 (10182) Modelos Lineales Generalizados"
+author: "Carlos Guillermo Mayorga Tapia"
+id: "00294506"
+course: "Modelos Lineales Generalizados"
+format:
+  html:
+    toc: true
+    code-fold: show
+    theme: cosmo
+---
+
+# Sección 5.1: Distribución Poisson (Reparaciones de Vehículos)
+
+Análisis de la frecuencia de reparaciones en $n = 550$ vehículos del ejército a lo largo de 10 años.
+
+a) Hipótesis nula en términos de los parámetros relevantes.
+b) Función de verosimilitud bajo $H_0$ y bajo $H_1$.
+c) Estimador de máxima verosimilitud de $\mu$ y $p_k(\mu)$.
+d) Frecuencias esperadas y prueba de bondad de ajuste de Pearson $\chi^2_\nu$.
+
+```{r}
+visitas <- 0:6
+frecuencia <- c(295, 190, 53, 5, 5, 2, 0)
+```
+
+---
+
+# Sección 5.2: Proceso Poisson Homogéneo (Defectos en Telas)
+
+Análisis del número de defectos en rollos de tela (`fabric.txt`).
+
+a) Función log-verosimilitud bajo proceso Poisson homogéneo.
+b) Evaluación de bondad de ajuste del modelo Poisson.
+c) Prueba de hipótesis de la tasa de 1 defecto cada 100 metros.
+
+```{r}
+fabric_path <- "../contenido_de_clase/data/fabric.txt"
+if (file.exists(fabric_path)) {
+  fabric <- read.table(fabric_path, header = TRUE)
+  head(fabric)
+}
+```
+
+---
+
+# Sección 5.3: Tablas de Contingencia (Caso de Envenenamiento)
+
+Datos de Korff, Taback y Beard (1952) sobre envenenamiento por comida en 306 individuos.
+
+$$\text{M}_{\text{Sat}} : \log \mu_{ijk} = a + c_i + p_j + s_k + (cp)_{ij} + (cs)_{ik} + (ps)_{jk} + (cps)_{ijk}$$
+
+a) Selección del modelo log-lineal más apropiado mediante prueba formal de ajuste.
+b) Conteos estimados y estimación de razones de momios (IC 95%).
+c) Modelo de regresión logística equivalente para "enfermedad" ajustado en R.
+
+```{r}
+# Análisis numérico de modelos log-lineales
+```

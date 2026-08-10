@@ -1,0 +1,9 @@
+"caesarean"	"antibiotics"	"risk_fact"	"infected"	"healthy"
+"Planned"	"Yes"	"Yes"	1	17
+"Planned"	"Yes"	"No"	0	2
+"Planned"	"No"	"Yes"	28	30
+"Planned"	"No"	"No"	8	32
+"Not planned"	"Yes"	"Yes"	11	87
+"Not planned"	"Yes"	"No"	0	0
+"Not planned"	"No"	"Yes"	23	3
+"Not planned"	"No"	"No"	0	9

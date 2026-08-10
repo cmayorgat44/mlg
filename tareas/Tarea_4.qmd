@@ -1,0 +1,26 @@
+---
+title: "Tarea 4 - Bioensayos y Modelo Dosis-Respuesta"
+subtitle: "MAT5508 (10182) Modelos Lineales Generalizados"
+author: "Carlos Guillermo Mayorga Tapia"
+id: "00294506"
+course: "Modelos Lineales Generalizados"
+format:
+  html:
+    toc: true
+    code-fold: show
+    theme: cosmo
+---
+
+# Sección 4.1: Familia Locación-Escala
+
+Supongamos una variable aleatoria $U$ definida en $\mathbb{R}$ con función de densidad $h(\cdot)$ y función de distribución acumulativa $H(\cdot)$. Sea $\mu$ y $\sigma$ dos constantes con $\sigma > 0$.
+
+Demuestre que $V = \mu + \sigma U$ tiene funciones de densidad $f(v)$ y distribución acumulativa $F(v)$ dadas por:
+
+$$f(v) = \frac{1}{\sigma} \cdot h\left(\frac{v-\mu}{\sigma}\right)$$
+
+$$F(v) = H\left(\frac{v-\mu}{\sigma}\right)$$
+
+### Demostración Matemática Formal
+
+*(Desarrollo matemático en construcción)*

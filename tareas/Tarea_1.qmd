@@ -1,0 +1,62 @@
+---
+title: "Tarea 1 - Estimación por Máxima Verosimilitud"
+subtitle: "MAT5508 (10182) Modelos Lineales Generalizados"
+author: "Carlos Guillermo Mayorga Tapia"
+id: "00294506"
+course: "Modelos Lineales Generalizados"
+format:
+  html:
+    toc: true
+    code-fold: show
+    theme: cosmo
+---
+
+# Seccion 1.1: Distribución Normal
+
+Suponga que $Y_1, \dots, Y_n$ son variables aleatorias normales independientes e idénticamente distribuidas con media $\mu$ y varianza conocida $\sigma^2$. La función de densidad de probabilidad de cada $Y_i$ está dada por:
+
+$$f(y; \mu) = (2\pi\sigma^2)^{-1/2} \exp\left\{ -\frac{(y-\mu)^2}{2\sigma^2} \right\}$$
+
+---
+
+## Ejercicio 1.1.1: Funciones de Verosimilitud y Log-Verosimilitud
+
+Calcule las funciones de verosimilitud $L(\mu)$ y log-verosimilitud $\ell(\mu)$ para $\mu$.
+
+### Solución Matemática
+
+*(Desarrollo matemático en construcción con notación formal LaTeX)*
+
+---
+
+## Ejercicio 1.1.2: Función de Puntuación (Score) e Información
+
+Obtenga las funciones de puntuación $S(\mu)$ y de información $I(\mu)$ y describa cómo encontrar el estimador de máxima verosimilitud $\hat{\mu}$.
+
+### Solución Matemática
+
+*(Desarrollo matemático en construcción)*
+
+---
+
+## Ejercicio 1.1.3: Distribución Muestral y Estadístico LRS
+
+Indique cuál es la distribución exacta de la media muestral $\bar{y} = n^{-1} \sum_{i=1}^n y_i$. Demuestre que la distribución exacta del estadístico LRS, dado por:
+
+$$-2r(\mu) = 2[\ell(\hat{\mu}) - \ell(\mu)]$$
+
+cumple $-2r(\mu) \sim \chi^2_1$.
+
+### Solución Matemática
+
+*(Demostración paso a paso en construcción)*
+
+---
+
+## Ejercicio 1.1.4: Modelo de Regresión con Ligadura Identidad
+
+Suponga que $Y_i \sim \mathcal{N}(\mu_i, \sigma^2)$, independientes pero no idénticamente distribuidas ($\sigma^2$ conocida). Sea $\mathbf{x}_i^\top = [1 \; x_{i1} \dots x_{i,p-1}]$ el vector de covariables y $\boldsymbol{\beta}^\top = [\beta_0 \; \beta_1 \dots \beta_{p-1}]$ los coeficientes de regresión, con predictor lineal $\eta_i = \mathbf{x}_i^\top \boldsymbol{\beta}$. Obtenga el vector de puntuación $S(\boldsymbol{\beta})$ y la matriz de información $I(\boldsymbol{\beta})$ bajo la ligadura identidad $\mu_i = \eta_i$.
+
+### Solución Matemática
+
+*(Desarrollo matricial formal)*

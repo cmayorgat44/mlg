@@ -1,0 +1,27 @@
+# Archivos de entorno R y RStudio
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+
+# renv (ignorar librerías instaladas y cache locales, pero mantener el activador y la configuración)
+renv/library/
+renv/python/
+renv/sandbox/
+renv/staging/
+
+# Quarto y R Markdown (ignorar caches y renderizados generados automáticamente)
+.quarto/
+*_files/
+*_cache/
+*.html
+
+# Archivos del sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

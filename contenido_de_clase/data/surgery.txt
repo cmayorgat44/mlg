@@ -1,0 +1,7 @@
+"trt"	"risk"	"died"	"surv"
+"Control"	"Low"	3	12
+"Control"	"Medium"	7	6
+"Control"	"High"	6	3
+"Treatment"	"Low"	2	10
+"Treatment"	"Medium"	3	10
+"Treatment"	"High"	2	8

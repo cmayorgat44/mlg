@@ -1,0 +1,60 @@
+---
+title: "Tarea 3 - Métodos Básicos para el Análisis de Datos Binarios"
+subtitle: "MAT5508 (10182) Modelos Lineales Generalizados"
+author: "Carlos Guillermo Mayorga Tapia"
+id: "00294506"
+course: "Modelos Lineales Generalizados"
+format:
+  html:
+    toc: true
+    code-fold: show
+    theme: cosmo
+---
+
+# Sección 3.1: Regresión Logística
+
+Se llevó a cabo un estudio para investigar el efecto de un nuevo medicamento para reducir la mortalidad después de una cirugía abdominal mayor en tres categorías de riesgo: bajo, medio y alto.
+
+Denotemos por $\pi_i = \operatorname{Pr}(Y_i = 1)$ la probabilidad de fallecimiento post-cirugía del $i$-ésimo paciente.
+
+Exprese cada una de las siguientes hipótesis en términos de un modelo de regresión logística para $\pi_i$ y determine los grados de libertad de la devianza:
+
+a) **$H_1$**: No hay asociación entre tratamiento y respuesta en cualquier categoría de riesgo.
+b) **$H_2$**: El logaritmo de la razón de momios es constante entre las categorías de riesgo.
+c) **$H_3$**: El logaritmo de la razón de momios se relaciona linealmente con una covariable continua $x_{i4}$.
+d) **$H_4$**: La transformación logit de $\pi_i$ se relaciona linealmente con $x_{i4}$, con pendiente común para ambos grupos.
+
+---
+
+# Sección 3.2: Intervalos de Confianza (`neuro.txt`)
+
+Utilice el output de R del modelo ajustado a los datos `neuro.txt`:
+
+$$\text{M}_{\text{main}} : \operatorname{logit} \pi_i = \hat{\beta}_0 + \hat{\beta}_1 x_{i1} + \hat{\beta}_2 x_{i2} + \hat{\beta}_3 x_{i3} + \hat{\beta}_4 x_{i4} + \hat{\beta}_5 x_{i5} + \hat{\beta}_6 x_{i6}$$
+
+para calcular los intervalos de confianza del 95% de las siguientes razones de momios:
+
+1. $e^{\beta_1 + \beta_3}$
+2. $e^{\beta_2 + \beta_5 - \beta_1 - \beta_4}$
+
+```{r}
+neuro_data_path <- "../contenido_de_clase/data/neuro.txt"
+if (file.exists(neuro_data_path)) {
+  neuro <- read.table(neuro_data_path, header = TRUE)
+  head(neuro)
+}
+```
+
+---
+
+# Sección 3.3: Análisis de Datos Binarios (Cesáreas)
+
+Estudio sobre la ocurrencia de infección ($Y_i = 1$ si hay infección, $Y_i = 0$ si no) tras un parto por cesárea.
+
+a) Ajuste del modelo de regresión logística con efectos principales.
+b) Intervalo de confianza al 95% para la probabilidad de infección en el escenario base.
+c) Intervalo de confianza al 95% para la razón de momios comparativa.
+
+```{r}
+# Análisis numérico de datos de cesáreas
+```
