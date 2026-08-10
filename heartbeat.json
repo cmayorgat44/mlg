@@ -34,5 +34,17 @@
       "tareas/Tarea_5.qmd"
     ],
     "status": "completado"
+  },
+  {
+    "timestamp": "2026-08-09T21:27:55Z",
+    "task": "Inicialización de Git local y Commit Inicial de 39 archivos respetando .gitignore",
+    "files_affected": [".git"],
+    "status": "completado"
+  },
+  {
+    "timestamp": "2026-08-09T21:30:00Z",
+    "task": "Intento de push remoto: Detectado conflicto de credenciales en Keychain con cuenta maggss44 vs cmayorgat44",
+    "files_affected": [".git/config"],
+    "status": "en progreso"
   }
 ]
