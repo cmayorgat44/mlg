@@ -5,32 +5,22 @@
 **Materia:** Modelos Lineales Generalizados (MAT5508 / 10182)  
 **Usuario GitHub:** `cmayorgat44`  
 **Email:** `mayorgacg@gmail.com`  
+**Repositorio GitHub:** https://github.com/cmayorgat44/mlg  
 
 ---
 
 ## Estado Actual
-- **Fase del Proyecto:** Repositorio Git local inicializado y **Commit Inicial completado** (39 archivos empaquetados respetando `.gitignore`). Listo para el `git push`.
+- **Fase del Proyecto:** Repositorio Git subido y sincronizado exitosamente en GitHub (rama `main`).
 
 ---
 
 ## Registro de Actividades y Decisiones
 
-### [2026-08-09] Commit Inicial de Git
+### [2026-08-09] Vinculación Remota y Push Exitoso a GitHub
 
-1. **Inicialización y Commit Local**:
-   - Repositorio local `git` configurado en la rama `main`.
-   - Usuario local fijado a `cmayorgat44` (`mayorgacg@gmail.com`).
-   - Se ejecutó el `git commit` inicial empaquetando 39 archivos esenciales y excluyendo librerías locales, temporales de R y cachés de Quarto según `.gitignore`.
-
-2. **Vinculación Remota**:
-   - Repositorio remoto vinculado a `https://github.com/cmayorgat44/mlg.git`.
-
----
-
-## Instrucciones para Completar el Push a GitHub
-
-Ejecuta el siguiente comando en tu terminal (donde están guardadas tus credenciales o token de acceso de GitHub):
-
-```bash
-git push -u origin main
-```
+1. **Diagnóstico SSH y Host personal**:
+   - Se configuró la URL remota del origen para utilizar la llave SSH personal (`personal.github.com` -> `~/.ssh/id_rsa_personal`).
+2. **Push Completado**:
+   - Todos los commits y 39 archivos han sido subidos exitosamente a la rama `main` de `https://github.com/cmayorgat44/mlg`.
+3. **Tracking Sincronizado**:
+   - `git status` reporta la rama local `main` al día con `origin/main`.
