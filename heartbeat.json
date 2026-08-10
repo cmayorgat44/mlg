@@ -63,5 +63,15 @@
       "tareas/tarea_5/"
     ],
     "status": "completado"
+  },
+  {
+    "timestamp": "2026-08-09T22:00:00Z",
+    "task": "Resolución analítica rigurosa de la Tarea 1 (incisos 1-4) en QMD, generación de HTML y PDF, y apertura en Safari",
+    "files_affected": [
+      "tareas/tarea_1/Tarea_1.qmd",
+      "tareas/tarea_1/Tarea_1.html",
+      "tareas/tarea_1/Tarea_1.pdf"
+    ],
+    "status": "completado"
   }
 ]
