@@ -10,20 +10,23 @@
 ---
 
 ## Estado Actual
-- **Fase del Proyecto:** Repositorio Git en GitHub actualizado: datasets e insumos de datos brutos (`.txt`, `.csv`, `contenido_de_clase/data/`) des-subidos y protegidos por `.gitignore`. Documentos PDF, HTML, Quarto (`.qmd`), configuraciones y scripts se mantienen rastreados y publicados.
+- **Fase del Proyecto:** Documentos HTML y PDF generados e integrados en GitHub para todas las tareas (`Tarea_1`, `Tarea_3`, `Tarea_4`, `Tarea_5`). Formato visual y tipográfico optimizado con LuaLaTeX y estilos responsivos.
 
 ---
 
 ## Registro de Actividades y Decisiones
 
-### [2026-08-09] Protección de Datos y Filtro Exhaustivo de GitHub
+### [2026-08-09] Generación e Integración de Formatos HTML y PDF
 
-1. **Exclusión de Datasets y Archivos Brutos de Datos**:
-   - Se actualizó `.gitignore` para bloquear automáticamente cualquier extensión de datos o dataset (`*.txt`, `*.csv`, `*.tsv`, `*.dat`, `*.xlsx`, `*.rds`, `*.RData`, `contenido_de_clase/data/`, etc.).
-   - Se removieron del índice de Git (sin borrar de tu disco local) los 17 archivos `.txt` presentes en `contenido_de_clase/data/`.
+1. **Configuración de Renderizado Quarto Impecable**:
+   - YAML configurado con tipografía `cosmo`, tabla de contenidos numerada, `embed-resources: true` para HTML autosuficiente.
+   - Para PDF: Margen exacto de 25mm (`geometry`), paquetes `amsmath`, `microtype`, encabezado elegante `fancyhdr` con tu nombre e ID en el header de cada página y notación LaTeX profesional.
+2. **Generación con LuaLaTeX y Pandoc**:
+   - Se compilaron exitosamente las versiones HTML y PDF de:
+     - `tareas/Tarea_1.qmd` -> `Tarea_1.html` & `Tarea_1.pdf`
+     - `tareas/Tarea_3.qmd` -> `Tarea_3.html` & `Tarea_3.pdf`
+     - `tareas/Tarea_4.qmd` -> `Tarea_4.html` & `Tarea_4.pdf`
+     - `tareas/Tarea_5.qmd` -> `Tarea_5.html` & `Tarea_5.pdf`
 
-2. **Inclusión de Documentación y Presentaciones**:
-   - Se mantuvieron rastreados e integrados en GitHub los archivos PDF (`contenido_de_clase/lectures/*.pdf`, `Ejercicios_2026.pdf`, `Syllabus.pdf`) y las salidas renderizadas HTML de Quarto.
-
-3. **Push a GitHub**:
-   - Cambios commiteados y enviados exitosamente a `https://github.com/cmayorgat44/mlg` en la rama `main`.
+3. **Publicación y Sincronización en GitHub**:
+   - `git commit` y `git push` ejecutados hacia `origin/main`.

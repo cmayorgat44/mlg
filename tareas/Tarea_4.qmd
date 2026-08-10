@@ -1,17 +1,45 @@
 ---
-title: "Tarea 4 - Bioensayos y Modelo Dosis-Respuesta"
-subtitle: "MAT5508 (10182) Modelos Lineales Generalizados"
-author: "Carlos Guillermo Mayorga Tapia"
-id: "00294506"
-course: "Modelos Lineales Generalizados"
+title: "Tarea 4: Bioensayos y Modelo Dosis-Respuesta"
+subtitle: "Modelos Lineales Generalizados (MAT5508 / 10182)"
+author: "Carlos Guillermo Mayorga Tapia (ID: 00294506)"
+date: today
+date-format: "D [de] MMMM, YYYY"
+lang: es
 format:
   html:
     toc: true
-    code-fold: show
+    toc-depth: 3
+    number-sections: true
     theme: cosmo
+    embed-resources: true
+    code-fold: show
+    code-copy: true
+    fig-align: center
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    papersize: letter
+    geometry:
+      - top=25mm
+      - bottom=25mm
+      - left=25mm
+      - right=25mm
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+    fig-align: center
+    header-includes:
+      - \usepackage{amsmath,amssymb,amsfonts,amsthm}
+      - \usepackage{microtype}
+      - \usepackage{fancyhdr}
+      - \pagestyle{fancy}
+      - \fancyhead[L]{\small Modelos Lineales Generalizados}
+      - \fancyhead[R]{\small Carlos Guillermo Mayorga Tapia (00294506)}
+      - \fancyfoot[C]{\thepage}
 ---
 
-# Sección 4.1: Familia Locación-Escala
+# Familia Locación-Escala (Sección 4.1)
 
 Supongamos una variable aleatoria $U$ definida en $\mathbb{R}$ con función de densidad $h(\cdot)$ y función de distribución acumulativa $H(\cdot)$. Sea $\mu$ y $\sigma$ dos constantes con $\sigma > 0$.
 

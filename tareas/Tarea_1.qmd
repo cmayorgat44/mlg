@@ -1,17 +1,45 @@
 ---
-title: "Tarea 1 - Estimación por Máxima Verosimilitud"
-subtitle: "MAT5508 (10182) Modelos Lineales Generalizados"
-author: "Carlos Guillermo Mayorga Tapia"
-id: "00294506"
-course: "Modelos Lineales Generalizados"
+title: "Tarea 1: Estimación por Máxima Verosimilitud"
+subtitle: "Modelos Lineales Generalizados (MAT5508 / 10182)"
+author: "Carlos Guillermo Mayorga Tapia (ID: 00294506)"
+date: today
+date-format: "D [de] MMMM, YYYY"
+lang: es
 format:
   html:
     toc: true
-    code-fold: show
+    toc-depth: 3
+    number-sections: true
     theme: cosmo
+    embed-resources: true
+    code-fold: show
+    code-copy: true
+    fig-align: center
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    papersize: letter
+    geometry:
+      - top=25mm
+      - bottom=25mm
+      - left=25mm
+      - right=25mm
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+    fig-align: center
+    header-includes:
+      - \usepackage{amsmath,amssymb,amsfonts,amsthm}
+      - \usepackage{microtype}
+      - \usepackage{fancyhdr}
+      - \pagestyle{fancy}
+      - \fancyhead[L]{\small Modelos Lineales Generalizados}
+      - \fancyhead[R]{\small Carlos Guillermo Mayorga Tapia (00294506)}
+      - \fancyfoot[C]{\thepage}
 ---
 
-# Seccion 1.1: Distribución Normal
+# Distribución Normal (Sección 1.1)
 
 Suponga que $Y_1, \dots, Y_n$ son variables aleatorias normales independientes e idénticamente distribuidas con media $\mu$ y varianza conocida $\sigma^2$. La función de densidad de probabilidad de cada $Y_i$ está dada por:
 
@@ -25,7 +53,7 @@ Calcule las funciones de verosimilitud $L(\mu)$ y log-verosimilitud $\ell(\mu)$ 
 
 ### Solución Matemática
 
-*(Desarrollo matemático en construcción con notación formal LaTeX)*
+*(Desarrollo matemático con notación formal LaTeX)*
 
 ---
 
@@ -35,7 +63,7 @@ Obtenga las funciones de puntuación $S(\mu)$ y de información $I(\mu)$ y descr
 
 ### Solución Matemática
 
-*(Desarrollo matemático en construcción)*
+*(Desarrollo matemático)*
 
 ---
 
@@ -49,7 +77,7 @@ cumple $-2r(\mu) \sim \chi^2_1$.
 
 ### Solución Matemática
 
-*(Demostración paso a paso en construcción)*
+*(Demostración paso a paso)*
 
 ---
 

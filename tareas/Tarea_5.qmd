@@ -1,17 +1,45 @@
 ---
-title: "Tarea 5 - Modelos Log-Lineales"
-subtitle: "MAT5508 (10182) Modelos Lineales Generalizados"
-author: "Carlos Guillermo Mayorga Tapia"
-id: "00294506"
-course: "Modelos Lineales Generalizados"
+title: "Tarea 5: Modelos Log-Lineales"
+subtitle: "Modelos Lineales Generalizados (MAT5508 / 10182)"
+author: "Carlos Guillermo Mayorga Tapia (ID: 00294506)"
+date: today
+date-format: "D [de] MMMM, YYYY"
+lang: es
 format:
   html:
     toc: true
-    code-fold: show
+    toc-depth: 3
+    number-sections: true
     theme: cosmo
+    embed-resources: true
+    code-fold: show
+    code-copy: true
+    fig-align: center
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    papersize: letter
+    geometry:
+      - top=25mm
+      - bottom=25mm
+      - left=25mm
+      - right=25mm
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+    fig-align: center
+    header-includes:
+      - \usepackage{amsmath,amssymb,amsfonts,amsthm}
+      - \usepackage{microtype}
+      - \usepackage{fancyhdr}
+      - \pagestyle{fancy}
+      - \fancyhead[L]{\small Modelos Lineales Generalizados}
+      - \fancyhead[R]{\small Carlos Guillermo Mayorga Tapia (00294506)}
+      - \fancyfoot[C]{\thepage}
 ---
 
-# Sección 5.1: Distribución Poisson (Reparaciones de Vehículos)
+# Distribución Poisson (Sección 5.1 - Reparaciones de Vehículos)
 
 Análisis de la frecuencia de reparaciones en $n = 550$ vehículos del ejército a lo largo de 10 años.
 
@@ -21,13 +49,16 @@ c) Estimador de máxima verosimilitud de $\mu$ y $p_k(\mu)$.
 d) Frecuencias esperadas y prueba de bondad de ajuste de Pearson $\chi^2_\nu$.
 
 ```{r}
+#| label: datos-poisson
+#| warning: false
+#| message: false
 visitas <- 0:6
 frecuencia <- c(295, 190, 53, 5, 5, 2, 0)
 ```
 
 ---
 
-# Sección 5.2: Proceso Poisson Homogéneo (Defectos en Telas)
+# Proceso Poisson Homogéneo (Sección 5.2 - Defectos en Telas)
 
 Análisis del número de defectos en rollos de tela (`fabric.txt`).
 
@@ -36,6 +67,9 @@ b) Evaluación de bondad de ajuste del modelo Poisson.
 c) Prueba de hipótesis de la tasa de 1 defecto cada 100 metros.
 
 ```{r}
+#| label: cargar-datos-fabric
+#| warning: false
+#| message: false
 fabric_path <- "../contenido_de_clase/data/fabric.txt"
 if (file.exists(fabric_path)) {
   fabric <- read.table(fabric_path, header = TRUE)
@@ -45,7 +79,7 @@ if (file.exists(fabric_path)) {
 
 ---
 
-# Sección 5.3: Tablas de Contingencia (Caso de Envenenamiento)
+# Tablas de Contingencia (Sección 5.3 - Envenenamiento)
 
 Datos de Korff, Taback y Beard (1952) sobre envenenamiento por comida en 306 individuos.
 
@@ -56,5 +90,8 @@ b) Conteos estimados y estimación de razones de momios (IC 95%).
 c) Modelo de regresión logística equivalente para "enfermedad" ajustado en R.
 
 ```{r}
+#| label: modelos-log-lineales
+#| warning: false
+#| message: false
 # Análisis numérico de modelos log-lineales
 ```

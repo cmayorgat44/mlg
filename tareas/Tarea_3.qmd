@@ -1,17 +1,45 @@
 ---
-title: "Tarea 3 - Métodos Básicos para el Análisis de Datos Binarios"
-subtitle: "MAT5508 (10182) Modelos Lineales Generalizados"
-author: "Carlos Guillermo Mayorga Tapia"
-id: "00294506"
-course: "Modelos Lineales Generalizados"
+title: "Tarea 3: Métodos Básicos para el Análisis de Datos Binarios"
+subtitle: "Modelos Lineales Generalizados (MAT5508 / 10182)"
+author: "Carlos Guillermo Mayorga Tapia (ID: 00294506)"
+date: today
+date-format: "D [de] MMMM, YYYY"
+lang: es
 format:
   html:
     toc: true
-    code-fold: show
+    toc-depth: 3
+    number-sections: true
     theme: cosmo
+    embed-resources: true
+    code-fold: show
+    code-copy: true
+    fig-align: center
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    papersize: letter
+    geometry:
+      - top=25mm
+      - bottom=25mm
+      - left=25mm
+      - right=25mm
+    colorlinks: true
+    linkcolor: blue
+    urlcolor: blue
+    fig-align: center
+    header-includes:
+      - \usepackage{amsmath,amssymb,amsfonts,amsthm}
+      - \usepackage{microtype}
+      - \usepackage{fancyhdr}
+      - \pagestyle{fancy}
+      - \fancyhead[L]{\small Modelos Lineales Generalizados}
+      - \fancyhead[R]{\small Carlos Guillermo Mayorga Tapia (00294506)}
+      - \fancyfoot[C]{\thepage}
 ---
 
-# Sección 3.1: Regresión Logística
+# Regresión Logística (Sección 3.1)
 
 Se llevó a cabo un estudio para investigar el efecto de un nuevo medicamento para reducir la mortalidad después de una cirugía abdominal mayor en tres categorías de riesgo: bajo, medio y alto.
 
@@ -26,7 +54,7 @@ d) **$H_4$**: La transformación logit de $\pi_i$ se relaciona linealmente con $
 
 ---
 
-# Sección 3.2: Intervalos de Confianza (`neuro.txt`)
+# Intervalos de Confianza (Sección 3.2 - `neuro.txt`)
 
 Utilice el output de R del modelo ajustado a los datos `neuro.txt`:
 
@@ -38,6 +66,9 @@ para calcular los intervalos de confianza del 95% de las siguientes razones de m
 2. $e^{\beta_2 + \beta_5 - \beta_1 - \beta_4}$
 
 ```{r}
+#| label: cargar-datos-neuro
+#| warning: false
+#| message: false
 neuro_data_path <- "../contenido_de_clase/data/neuro.txt"
 if (file.exists(neuro_data_path)) {
   neuro <- read.table(neuro_data_path, header = TRUE)
@@ -47,7 +78,7 @@ if (file.exists(neuro_data_path)) {
 
 ---
 
-# Sección 3.3: Análisis de Datos Binarios (Cesáreas)
+# Análisis de Datos Binarios (Sección 3.3 - Cesáreas)
 
 Estudio sobre la ocurrencia de infección ($Y_i = 1$ si hay infección, $Y_i = 0$ si no) tras un parto por cesárea.
 
@@ -56,5 +87,8 @@ b) Intervalo de confianza al 95% para la probabilidad de infección en el escena
 c) Intervalo de confianza al 95% para la razón de momios comparativa.
 
 ```{r}
+#| label: datos-cesareas
+#| warning: false
+#| message: false
 # Análisis numérico de datos de cesáreas
 ```
