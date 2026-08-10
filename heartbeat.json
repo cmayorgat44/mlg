@@ -46,5 +46,11 @@
     "task": "Push exitoso a repositorio remoto GitHub (https://github.com/cmayorgat44/mlg) vía SSH personal",
     "files_affected": [".git/config"],
     "status": "completado"
+  },
+  {
+    "timestamp": "2026-08-09T21:36:00Z",
+    "task": "Actualización de .gitignore y des-rastreo de datasets (.txt, .csv, data/) en GitHub manteniendo PDFs y HTMLs",
+    "files_affected": [".gitignore", "contenido_de_clase/data"],
+    "status": "completado"
   }
 ]
