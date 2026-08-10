@@ -1,23 +1,65 @@
-# Archivos de entorno R y RStudio
+# ==========================================
+# 1. Datos y Datasets (Data files & raw data)
+# ==========================================
+*.txt
+*.csv
+*.tsv
+*.dat
+*.xlsx
+*.xls
+*.ods
+*.rds
+*.rda
+*.RData
+*.parquet
+*.feather
+*.sqlite
+*.sqlite3
+*.db
+contenido_de_clase/data/
+data/
+
+# Excepciones explícitas de archivos JSON de control del agente
+*.json
+!context_graph.json
+!heartbeat.json
+!renv/settings.json
+
+# ==========================================
+# 2. Cachés y Temporales de Renderizado
+# ==========================================
+.quarto/
+*_files/
+*_cache/
+
+# ==========================================
+# 3. Entorno de R, RStudio y renv
+# ==========================================
 .Rhistory
 .RData
 .Ruserdata
 .Rproj.user/
 *.Rproj
-
-# renv (ignorar librerías instaladas y cache locales, pero mantener el activador y la configuración)
 renv/library/
 renv/python/
 renv/sandbox/
 renv/staging/
+renv/local/
 
-# Quarto y R Markdown (ignorar caches y renderizados generados automáticamente)
-.quarto/
-*_files/
-*_cache/
-*.html
+# ==========================================
+# 4. IDEs, Editores y Entornos Virtuales
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*~
+.venv/
+env/
+venv/
 
-# Archivos del sistema operativo
+# ==========================================
+# 5. Archivos del Sistema Operativo
+# ==========================================
 .DS_Store
 .DS_Store?
 ._*
@@ -25,3 +67,12 @@ renv/staging/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# ==========================================
+# 6. Archivos de Log, Temporales y Secretos
+# ==========================================
+*.log
+*.tmp
+*.temp
+.env
+*.bak
