@@ -19,13 +19,19 @@ Estas reglas aplican estrictamente a toda asistencia y desarrollo en este reposi
 
 ## 4. Tareas en Quarto (`.qmd`)
 - Fuente primaria de consulta: `./contenido_de_clase/lectures` y `./contenido_de_clase/codigos`.
-- Cada entregable de tarea debe ser un archivo `.qmd` nombrado `Tarea_<numero>.qmd`.
+- Es indispensable leer con detenimiento `./contenido_de_clase/requerimientos_tareas/Ejercicios_2026.pdf` para hacer las tareas, ya que ahí se especifican los ejercicios a resolver.
+- Es indispensable revisar `./contenido_de_clase/codigos/GLM_Examples.R`, donde se detallan los ejercicios de clase en los que debe basarse la respuesta a la tarea.
+- Para cada ejercicio, se debe discernir explícitamente si la respuesta requerida es de naturaleza analítica (desarrollo matemático/probabilístico) o computacional (código en R), y resolverlo en consecuencia.
+- Todos los conjuntos de datos necesarios para las tareas se encuentran en `./contenido_de_clase/data`; deben usarse esos archivos como fuente de datos, sin modificarlos (ver Sección 2).
+- Cada entregable de tarea debe generarse en los formatos `.qmd`, `.pdf` y `.html`.
+- Todos los archivos correspondientes a una tarea deben guardarse dentro de la ruta `./tareas/tarea_<numero>/` (ej. `./tareas/tarea_3/Tarea_3.qmd`).
 - Encabezado YAML obligatorio:
   - `title`: Tarea <número> - <Tema>
   - `author`: Carlos Guillermo Mayorga Tapia
   - `id`: 00294506
   - `course`: Modelos Lineales Generalizados
 - Desarrollos matemáticos en LaTeX en Markdown; código y modelos en bloques R.
+- Todos los conjuntos de datos necesarios para las tareas se encuentran en `./contenido_de_clase/data`; deben usarse esos archivos como fuente de datos, sin modificarlos (ver Sección 2). Si un archivo de datos esperado no se encuentra en esa carpeta, el agente debe notificarlo explícitamente en vez de asumir su ausencia o inventar datos.
 
 ## 5. Seguimiento y Grafo de Contexto
 - Mantener actualizado `heartbeat.json` tras cada unidad de trabajo completada.

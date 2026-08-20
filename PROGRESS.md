@@ -10,11 +10,20 @@
 ---
 
 ## Estado Actual
-- **Fase del Proyecto:** Tarea 1 completada (ejercicios 1 a 4 de distribución normal y máxima verosimilitud). Compilada a HTML y PDF, y sincronizada con el repositorio de GitHub. Listos para continuar con la Tarea 3 mañana.
+- **Fase del Proyecto:** Tarea 3 completada (Métodos básicos para el análisis de datos binarios). Se generó el archivo `Tarea_3.qmd` en la raíz del repositorio y está lista para ser renderizada a PDF.
 
 ---
 
 ## Registro de Actividades y Decisiones
+
+### [2026-08-20] Resolución de Tarea 3
+
+1. **Resolución de Tarea 3 (Métodos básicos para el análisis de datos binarios)**:
+   - Se creó `Tarea_3.qmd` respondiendo a los ejercicios de la sección 3 del PDF, combinando desarrollo matemático y computacional.
+   - **Ejercicio 3.1**: Modelado analítico de cuatro hipótesis de regresión logística ($H_1, H_2, H_3, H_4$) y cálculo de sus correspondientes grados de libertad para la prueba de devianza. Se incluyó un `data.frame` representativo para los datos observados de forma opcional.
+   - **Ejercicio 3.2**: Cálculo computacional de intervalos de confianza para funciones no lineales de parámetros ($\exp(\beta_1 + \beta_3)$ y $\exp(\beta_2 + \beta_5 - \beta_1 - \beta_4)$) empleando el archivo `neuro.txt` y la matriz de covarianzas.
+   - **Ejercicio 3.3**: Transcripción de la tabla 2 a R. Ajuste de un modelo de efectos principales y cálculo de inferencias, incluyendo evaluación de bondad de ajuste, predicción probabilística e intervalo de confianza para la razón de momios asociada a la exposición de antibióticos y factores de riesgo en el escenario de cesárea.
+
 
 ### [2026-08-09] Resolución de Tarea 1 y Sincronización
 

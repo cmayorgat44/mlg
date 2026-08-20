@@ -1,94 +1,284 @@
 ---
-title: "Tarea 3: Métodos Básicos para el Análisis de Datos Binarios"
-subtitle: "Modelos Lineales Generalizados (MAT5508 / 10182)"
-author: "Carlos Guillermo Mayorga Tapia (ID: 00294506)"
-date: today
-date-format: "D [de] MMMM, YYYY"
-lang: es
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    theme: cosmo
-    embed-resources: true
-    code-fold: show
-    code-copy: true
-    fig-align: center
-  pdf:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    papersize: letter
-    geometry:
-      - top=25mm
-      - bottom=25mm
-      - left=25mm
-      - right=25mm
-    colorlinks: true
-    linkcolor: blue
-    urlcolor: blue
-    fig-align: center
-    header-includes:
-      - \usepackage{amsmath,amssymb,amsfonts,amsthm}
-      - \usepackage{microtype}
-      - \usepackage{fancyhdr}
-      - \pagestyle{fancy}
-      - \fancyhead[L]{\small Modelos Lineales Generalizados}
-      - \fancyhead[R]{\small Carlos Guillermo Mayorga Tapia (00294506)}
-      - \fancyfoot[C]{\thepage}
+title: "Tarea 3 - Métodos básicos para el análisis de datos binarios"
+author: "Carlos Guillermo Mayorga Tapia"
+id: "00294506"
+course: "Modelos Lineales Generalizados"
+format: pdf
 ---
 
-# Regresión Logística (Sección 3.1)
-
-Se llevó a cabo un estudio para investigar el efecto de un nuevo medicamento para reducir la mortalidad después de una cirugía abdominal mayor en tres categorías de riesgo: bajo, medio y alto.
-
-Denotemos por $\pi_i = \operatorname{Pr}(Y_i = 1)$ la probabilidad de fallecimiento post-cirugía del $i$-ésimo paciente.
-
-Exprese cada una de las siguientes hipótesis en términos de un modelo de regresión logística para $\pi_i$ y determine los grados de libertad de la devianza:
-
-a) **$H_1$**: No hay asociación entre tratamiento y respuesta en cualquier categoría de riesgo.
-b) **$H_2$**: El logaritmo de la razón de momios es constante entre las categorías de riesgo.
-c) **$H_3$**: El logaritmo de la razón de momios se relaciona linealmente con una covariable continua $x_{i4}$.
-d) **$H_4$**: La transformación logit de $\pi_i$ se relaciona linealmente con $x_{i4}$, con pendiente común para ambos grupos.
-
----
-
-# Intervalos de Confianza (Sección 3.2 - `neuro.txt`)
-
-Utilice el output de R del modelo ajustado a los datos `neuro.txt`:
-
-$$\text{M}_{\text{main}} : \operatorname{logit} \pi_i = \hat{\beta}_0 + \hat{\beta}_1 x_{i1} + \hat{\beta}_2 x_{i2} + \hat{\beta}_3 x_{i3} + \hat{\beta}_4 x_{i4} + \hat{\beta}_5 x_{i5} + \hat{\beta}_6 x_{i6}$$
-
-para calcular los intervalos de confianza del 95% de las siguientes razones de momios:
-
-1. $e^{\beta_1 + \beta_3}$
-2. $e^{\beta_2 + \beta_5 - \beta_1 - \beta_4}$
-
-```{r}
-#| label: cargar-datos-neuro
-#| warning: false
-#| message: false
-neuro_data_path <- "../../contenido_de_clase/data/neuro.txt"
-if (file.exists(neuro_data_path)) {
-  neuro <- read.table(neuro_data_path, header = TRUE)
-  head(neuro)
-}
+```{r setup, include=FALSE}
+# Configuración inicial y carga de librerías
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(MASS)
 ```
 
----
+## Ejercicio 3.1: Regresión Logística
 
-# Análisis de Datos Binarios (Sección 3.3 - Cesáreas)
+**Desarrollo Analítico**
 
-Estudio sobre la ocurrencia de infección ($Y_i = 1$ si hay infección, $Y_i = 0$ si no) tras un parto por cesárea.
+Definimos la probabilidad de fallecimiento post-cirugía para el $i$-ésimo paciente como $\pi_i = \Pr(Y_i = 1)$. Se proponen las siguientes variables predictoras:
+- $x_{i1} = 1$ si el paciente es tratado, $0$ si es control.
+- $x_{i2} = 1$ si el riesgo es medio, $0$ en otro caso.
+- $x_{i3} = 1$ si el riesgo es alto, $0$ en otro caso.
 
-a) Ajuste del modelo de regresión logística con efectos principales.
-b) Intervalo de confianza al 95% para la probabilidad de infección en el escenario base.
-c) Intervalo de confianza al 95% para la razón de momios comparativa.
+Y las interacciones:
+- $x_{i12} = x_{i1} x_{i2}$
+- $x_{i13} = x_{i1} x_{i3}$
+
+Dado que el riesgo de cirugía tiene 3 categorías, sus variables indicadoras $x_{i2}$ y $x_{i3}$ abarcan todos los niveles respecto al nivel de referencia (riesgo bajo). 
+En total, tenemos $N=6$ categorías o patrones de covariables (2 niveles de tratamiento $\times$ 3 niveles de riesgo).
+
+Expresaremos cada hipótesis en términos del predictor lineal y determinaremos los grados de libertad de la estadística de devianza, donde $df = N - p$, siendo $p$ el número de parámetros libres en el modelo.
+
+**a) $H_1$: No hay asociación entre tratamiento y respuesta en cualquier categoría de riesgo.**
+
+Bajo esta hipótesis, la probabilidad de fallecimiento depende únicamente del riesgo de la cirugía y no del tratamiento recibido. Por tanto, omitimos la variable de tratamiento y sus interacciones. El modelo de regresión logística es:
+
+$$ \text{logit}(\pi_i) = \beta_0 + \beta_2 x_{i2} + \beta_3 x_{i3} $$
+
+Este modelo tiene $p = 3$ parámetros ($\beta_0, \beta_2, \beta_3$).
+Los grados de libertad de la estadística de devianza son $df = N - p = 6 - 3 = 3$.
+
+**b) $H_2$: El logaritmo de la razón de momios que asocia tratamiento y respuesta es constante entre las categorías de riesgo.**
+
+El logaritmo de la razón de momios (log OR) del tratamiento frente al control se representa como la diferencia de los logits. Si este log OR es constante para cualquier nivel de riesgo, significa que no existen interacciones entre el tratamiento y el riesgo. El modelo es:
+
+$$ \text{logit}(\pi_i) = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \beta_3 x_{i3} $$
+
+Este modelo tiene $p = 4$ parámetros ($\beta_0, \beta_1, \beta_2, \beta_3$).
+Los grados de libertad de la estadística de devianza son $df = N - p = 6 - 4 = 2$.
+
+**c) $H_3$: El logaritmo de la razón de momios que asocia tratamiento y respuesta se relaciona linealmente con una covariable continua, $x_{i4}$, que expresa el nivel de riesgo de la cirugía.**
+
+Sustituimos los indicadores categóricos de riesgo por una covariable continua $x_{i4}$. La hipótesis afirma que el log OR del tratamiento cambia linealmente con el nivel de riesgo $x_{i4}$, lo cual implica un término de interacción entre $x_{i1}$ y $x_{i4}$. El modelo se especifica como:
+
+$$ \text{logit}(\pi_i) = \beta_0 + \beta_1 x_{i1} + \beta_4 x_{i4} + \beta_5 (x_{i1} x_{i4}) $$
+
+Este modelo tiene $p = 4$ parámetros ($\beta_0, \beta_1, \beta_4, \beta_5$). Asumiendo que aún tenemos 6 patrones únicos en nuestros datos observados (aunque el riesgo sea continuo, sus valores únicos siguen reflejando las 6 combinaciones), los grados de libertad de la devianza son $df = 6 - 4 = 2$.
+
+**d) $H_4$: La transformación logit de $\pi_i$ se relaciona linealmente con $x_{i4}$, con pendiente común para ambos grupos: tratados y control.**
+
+Dado que la pendiente con respecto al nivel de riesgo continuo $x_{i4}$ es común para ambos grupos, no existe interacción entre el tratamiento y $x_{i4}$. El modelo es:
+
+$$ \text{logit}(\pi_i) = \beta_0 + \beta_1 x_{i1} + \beta_4 x_{i4} $$
+
+Este modelo cuenta con $p = 3$ parámetros ($\beta_0, \beta_1, \beta_4$).
+Los grados de libertad de la estadística de devianza son $df = N - p = 6 - 3 = 3$.
+
+**Desarrollo Computacional**
+
+A continuación se muestra cómo se construiría el *data.frame* en `R` para representar la Tabla 1 del Ejercicio 3.1, para tener los datos capturados y disponibles si se requiere ajustar modelos posteriormente.
 
 ```{r}
-#| label: datos-cesareas
-#| warning: false
-#| message: false
-# Análisis numérico de datos de cesáreas
+df_ej3_1 <- data.frame(
+  tratamiento = c(0, 0, 0, 1, 1, 1),
+  riesgo = factor(c("Bajo", "Medio", "Alto", "Bajo", "Medio", "Alto"), 
+                  levels=c("Bajo", "Medio", "Alto")),
+  murio = c(3, 7, 6, 2, 3, 2),
+  sobrevivio = c(12, 6, 3, 10, 10, 8)
+)
+df_ej3_1
 ```
+
+
+## Ejercicio 3.2: Intervalos de Confianza
+
+**Desarrollo Computacional**
+
+Se nos pide usar el conjunto de datos `neuro.txt` para concluir el Ejemplo 3.4 (ejemplo 3.3 en los códigos), ajustando el modelo de efectos principales y construyendo intervalos de confianza para dos funciones no lineales de los parámetros.
+
+Cargamos los datos y definimos los factores, utilizando la variable de respuesta combinada:
+
+```{r}
+# Leer datos
+datos_neuro <- read.table("../../contenido_de_clase/data/neuro.txt", header = TRUE)
+datos_neuro$agef <- factor(datos_neuro$age)
+datos_neuro$stagef <- factor(datos_neuro$stage)
+datos_neuro$resp <- cbind(datos_neuro$y, datos_neuro$n - datos_neuro$y)
+
+# Ajuste del modelo de efectos principales
+M_main <- glm(resp ~ agef + stagef, family = binomial(link = logit), data = datos_neuro)
+summary(M_main)
+```
+
+El modelo $M_{main}$ ajustado toma la forma:
+$$ \text{logit } \pi_i = \hat{\beta}_0 + \hat{\beta}_1 x_{i1} + \hat{\beta}_2 x_{i2} + \hat{\beta}_3 x_{i3} + \hat{\beta}_4 x_{i4} + \hat{\beta}_5 x_{i5} + \hat{\beta}_6 x_{i6} $$
+
+Donde la correspondencia en R es la siguiente (el nivel base es 1):
+- $\hat{\beta}_0$: (Intercept)
+- $\hat{\beta}_1$: agef2
+- $\hat{\beta}_2$: agef3
+- $\hat{\beta}_3$: stagef2
+- $\hat{\beta}_4$: stagef3
+- $\hat{\beta}_5$: stagef4
+- $\hat{\beta}_6$: stagef5
+
+Para calcular los intervalos de confianza para las razones de momios de combinaciones lineales, extraemos los coeficientes y su matriz de varianzas y covarianzas:
+
+```{r}
+# Coeficientes estimados y matriz de covarianzas
+beta_hat <- coef(M_main)
+Sigma_hat <- vcov(M_main)
+
+# Nivel de confianza del 95%
+alpha <- 0.05
+z <- qnorm(1 - alpha/2)
+```
+
+**1. Intervalo de confianza para $e^{\beta_1 + \beta_3}$**
+
+La combinación lineal es $L_1 = \beta_1 + \beta_3$. 
+
+```{r}
+# El vector de contrastes para L1 = beta_1 + beta_3
+c1 <- c(0, 1, 0, 1, 0, 0, 0)
+L1_hat <- sum(c1 * beta_hat)
+
+# Varianza de L1
+var_L1 <- t(c1) %*% Sigma_hat %*% c1
+se_L1 <- sqrt(as.numeric(var_L1))
+
+# Intervalo de confianza para L1
+ci_L1_inf <- L1_hat - z * se_L1
+ci_L1_sup <- L1_hat + z * se_L1
+
+# Intervalo de confianza para la razón de momios e^(beta_1 + beta_3)
+cat("Estimación de L1:", L1_hat, "\n")
+cat("IC 95% para exp(beta_1 + beta_3): [", exp(ci_L1_inf), ",", exp(ci_L1_sup), "]\n")
+```
+
+
+**2. Intervalo de confianza para $e^{\beta_2 + \beta_5 - \beta_1 - \beta_4}$**
+
+La combinación lineal es $L_2 = \beta_2 + \beta_5 - \beta_1 - \beta_4$. 
+
+```{r}
+# El vector de contrastes para L2 = -beta_1 + beta_2 - beta_4 + beta_5
+c2 <- c(0, -1, 1, 0, -1, 1, 0)
+L2_hat <- sum(c2 * beta_hat)
+
+# Varianza de L2
+var_L2 <- t(c2) %*% Sigma_hat %*% c2
+se_L2 <- sqrt(as.numeric(var_L2))
+
+# Intervalo de confianza para L2
+ci_L2_inf <- L2_hat - z * se_L2
+ci_L2_sup <- L2_hat + z * se_L2
+
+# Intervalo de confianza para la razón de momios exp(beta_2 + beta_5 - beta_1 - beta_4)
+cat("Estimación de L2:", L2_hat, "\n")
+cat("IC 95% para exp(beta_2 + beta_5 - beta_1 - beta_4): [", 
+    exp(ci_L2_inf), ",", exp(ci_L2_sup), "]\n")
+```
+
+
+## Ejercicio 3.3: Análisis de datos binarios
+
+**a) Ajuste del modelo de regresión logística**
+
+Las variables predictoras se definen como:
+- $x_{i1} = 1$ si la cesárea fue planeada, 0 en otro caso.
+- $x_{i2} = 1$ si algún factor de riesgo estuvo presente, 0 en otro caso.
+- $x_{i3} = 1$ si se administraron antibióticos como medida preventiva, 0 en otro caso.
+
+Construimos el *data.frame* equivalente a la Tabla 2:
+
+```{r}
+df_ej3_3 <- data.frame(
+  cesarea_planeada = c(1, 1, 1, 1, 0, 0, 0, 0),
+  riesgo = c(1, 0, 1, 0, 1, 0, 1, 0),
+  antibioticos = c(1, 1, 0, 0, 1, 1, 0, 0),
+  infeccion = c(1, 0, 28, 8, 11, 0, 23, 0),
+  sin_infeccion = c(17, 2, 30, 32, 87, 0, 3, 9)
+)
+
+# Ajuste del modelo logístico de efectos principales
+M_inf <- glm(cbind(infeccion, sin_infeccion) ~ cesarea_planeada + riesgo + antibioticos, 
+             family = binomial(link = logit), data = df_ej3_3)
+summary(M_inf)
+```
+
+**Importancia de las variables y bondad de ajuste:**
+
+```{r}
+# Evaluar bondad de ajuste con la devianza residual
+dev_res <- deviance(M_inf)
+df_res <- df.residual(M_inf)
+p_value_gof <- 1 - pchisq(dev_res, df_res)
+
+cat("Devianza residual:", dev_res, " con", df_res, "grados de libertad\n")
+cat("Valor-p de la prueba de bondad de ajuste:", p_value_gof, "\n")
+```
+El valor-p de la devianza residual es $0.0601$, el cual es mayor al nivel típico de significancia de $0.05$. Esto sugiere que no hay evidencia fuerte para rechazar la idoneidad del modelo; el modelo de regresión logística de efectos principales proporciona un ajuste razonable a los datos.
+
+En cuanto a las variables:
+- **Antibióticos ($x_{i3}$)**: Su coeficiente es aproximadamente $-3.00$ con un valor $z$ muy negativo ($p < 0.001$), lo que indica que administrar antibióticos se asocia fuertemente con una reducción en la probabilidad de infección. 
+- **Factores de Riesgo ($x_{i2}$)**: El coeficiente es $2.03$ ($p < 0.001$). La presencia de factores de riesgo incrementa notablemente las probabilidades de infección.
+- **Cesárea Planeada ($x_{i1}$)**: El coeficiente es $-1.07$ ($p = 0.004$). Que la cesárea sea planeada disminuye significativamente las probabilidades de sufrir una infección.
+
+
+**b) Intervalo de confianza al 95% para la probabilidad de infección**
+
+Condiciones: cesárea no planeada ($x_{i1}=0$), sin factores de riesgo ($x_{i2}=0$) y sin antibióticos ($x_{i3}=0$).
+
+Dado que todas las variables son $0$, la transformación logit de la probabilidad de infección equivale al intercepto estimado ($\hat{\beta}_0$).
+
+```{r}
+# Creamos el data.frame con las nuevas observaciones
+nuevo_dato_b <- data.frame(
+  cesarea_planeada = 0,
+  riesgo = 0,
+  antibioticos = 0
+)
+
+# Hacemos la predicción sobre el predictor lineal
+pred_b <- predict(M_inf, newdata = nuevo_dato_b, type = "link", se.fit = TRUE)
+
+# Obtenemos los límites en la escala del predictor lineal
+lim_inf_b_link <- pred_b$fit - z * pred_b$se.fit
+lim_sup_b_link <- pred_b$fit + z * pred_b$se.fit
+
+# Usamos la inversa del logit (plogis) para regresar a probabilidades
+pi_b_inf <- plogis(lim_inf_b_link)
+pi_b_sup <- plogis(lim_sup_b_link)
+pi_b_est <- plogis(pred_b$fit)
+
+cat("Probabilidad estimada:", pi_b_est, "\n")
+cat("IC 95% para la probabilidad: [", pi_b_inf, ",", pi_b_sup, "]\n")
+```
+
+El intervalo de confianza al 95% para la probabilidad de infección cuando no se planeó la cesárea, no hubo factores de riesgo ni se administraron antibióticos, oscila aproximadamente entre $10.02\%$ y $82.7\%$. A pesar de la amplitud, que se debe a que la información para esa subpoblación base es escasa, el estimado puntual es del $37.2\%$.
+
+**c) Razón de momios e intervalo de confianza al 95% para un cambio en el riesgo**
+
+Mujer 1: se administran antibióticos, tiene factores de riesgo y cesárea no planeada.
+Valores: $x_{i1}=0, x_{i2}=1, x_{i3}=1$. El predictor lineal es: $\beta_0 + \beta_2 + \beta_3$.
+
+Mujer 2: sin antibióticos, sin factores de riesgo y cesárea planeada.
+Valores: $x_{i1}=1, x_{i2}=0, x_{i3}=0$. El predictor lineal es: $\beta_0 + \beta_1$.
+
+El logaritmo de la razón de momios (log OR) de Mujer 1 vs Mujer 2 es la diferencia de los predictores lineales:
+$$ \text{log OR} = (\beta_0 + \beta_2 + \beta_3) - (\beta_0 + \beta_1) = -\beta_1 + \beta_2 + \beta_3 $$
+
+```{r}
+# Extraemos coeficientes de M_inf
+b_inf <- coef(M_inf)
+V_inf <- vcov(M_inf)
+
+# El vector de contrastes para L_c = -beta_1 + beta_2 + beta_3
+# Coeficientes: (Intercept), cesarea_planeada, riesgo, antibioticos
+c_c <- c(0, -1, 1, 1)
+
+Lc_hat <- sum(c_c * b_inf)
+
+var_Lc <- t(c_c) %*% V_inf %*% c_c
+se_Lc <- sqrt(as.numeric(var_Lc))
+
+ci_Lc_inf <- Lc_hat - z * se_Lc
+ci_Lc_sup <- Lc_hat + z * se_Lc
+
+cat("Estimación del log OR:", Lc_hat, "\n")
+cat("IC 95% para la razón de momios exp(log OR): [", 
+    exp(ci_Lc_inf), ",", exp(ci_Lc_sup), "]\n")
+```
+Este resultado indica que, a pesar de que la Mujer 1 presenta factores de riesgo y no planeó la cesárea, el hecho de administrarle antibióticos compensa estos riesgos. La razón de momios estimada en aproximadamente $0.37$ (intervalo $[0.08, 1.83]$) es menor a 1, indicando que sus momios de infección tienden a ser menores que los de la Mujer 2, aunque el intervalo cruza el $1$, por lo que la diferencia no es estadísticamente significativa al 95%.
