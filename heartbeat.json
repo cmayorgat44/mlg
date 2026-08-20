@@ -81,5 +81,15 @@
       "Tarea_3.qmd"
     ],
     "status": "completado"
+  },
+  {
+    "timestamp": "2026-08-20T13:55:00Z",
+    "task": "Resolución de la Tarea 4 (Bioensayos y modelo dosis-respuesta) en tareas/tarea_4/Tarea_4.qmd",
+    "files_affected": [
+      "tareas/tarea_4/Tarea_4.qmd",
+      "tareas/tarea_4/Tarea_4.pdf",
+      "tareas/tarea_4/Tarea_4.html"
+    ],
+    "status": "completado"
   }
 ]

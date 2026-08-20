@@ -10,11 +10,16 @@
 ---
 
 ## Estado Actual
-- **Fase del Proyecto:** Tarea 3 completada (Métodos básicos para el análisis de datos binarios). Se generó el archivo `Tarea_3.qmd` en la raíz del repositorio y está lista para ser renderizada a PDF.
+- **Fase del Proyecto:** Tarea 4 completada (Bioensayos y modelo dosis-respuesta). Se generaron los entregables en formato .qmd, .pdf y .html y se ubicaron correctamente en `tareas/tarea_4/`. Listos para su envío o revisión.
 
 ---
 
 ## Registro de Actividades y Decisiones
+
+### [2026-08-20] Resolución de Tarea 4
+1. **Resolución de Tarea 4 (Bioensayos y modelo dosis-respuesta)**:
+   - Se creó y documentó rigurosamente la demostración analítica correspondiente a las funciones de densidad y distribución acumulativa de la familia locación-escala.
+   - Los resultados se exportaron exitosamente a `.pdf` y `.html` vía Quarto, respetando la estructura de carpetas especificada en las reglas.
 
 ### [2026-08-20] Resolución de Tarea 3
 

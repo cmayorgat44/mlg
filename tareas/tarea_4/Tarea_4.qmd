@@ -1,54 +1,52 @@
 ---
-title: "Tarea 4: Bioensayos y Modelo Dosis-Respuesta"
-subtitle: "Modelos Lineales Generalizados (MAT5508 / 10182)"
-author: "Carlos Guillermo Mayorga Tapia (ID: 00294506)"
-date: today
-date-format: "D [de] MMMM, YYYY"
-lang: es
-format:
-  html:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    theme: cosmo
-    embed-resources: true
-    code-fold: show
-    code-copy: true
-    fig-align: center
-  pdf:
-    toc: true
-    toc-depth: 3
-    number-sections: true
-    papersize: letter
-    geometry:
-      - top=25mm
-      - bottom=25mm
-      - left=25mm
-      - right=25mm
-    colorlinks: true
-    linkcolor: blue
-    urlcolor: blue
-    fig-align: center
-    header-includes:
-      - \usepackage{amsmath,amssymb,amsfonts,amsthm}
-      - \usepackage{microtype}
-      - \usepackage{fancyhdr}
-      - \pagestyle{fancy}
-      - \fancyhead[L]{\small Modelos Lineales Generalizados}
-      - \fancyhead[R]{\small Carlos Guillermo Mayorga Tapia (00294506)}
-      - \fancyfoot[C]{\thepage}
+title: "Tarea 4 - Bioensayos y modelo dosis-respuesta"
+author: "Carlos Guillermo Mayorga Tapia"
+id: "00294506"
+course: "Modelos Lineales Generalizados"
+format: pdf
 ---
 
-# Familia Locación-Escala (Sección 4.1)
+## Ejercicio 4.1: Familia locación-escala
 
-Supongamos una variable aleatoria $U$ definida en $\mathbb{R}$ con función de densidad $h(\cdot)$ y función de distribución acumulativa $H(\cdot)$. Sea $\mu$ y $\sigma$ dos constantes con $\sigma > 0$.
+**Desarrollo Analítico**
 
-Demuestre que $V = \mu + \sigma U$ tiene funciones de densidad $f(v)$ y distribución acumulativa $F(v)$ dadas por:
+Se nos pide demostrar que si $U$ es una variable aleatoria definida en $\mathbb{R}$ con función de densidad $h(\cdot)$ y función de distribución acumulativa $H(\cdot)$, entonces la variable aleatoria definida como $V = \mu + \sigma U$ (con $\sigma > 0$) tiene una función de densidad $f(v)$ y una función de distribución acumulativa $F(v)$ dadas por:
 
-$$f(v) = \frac{1}{\sigma} \cdot h\left(\frac{v-\mu}{\sigma}\right)$$
+$$f(v) = \frac{1}{\sigma} \cdot h\left(\frac{v - \mu}{\sigma}\right)$$
+$$F(v) = H\left(\frac{v - \mu}{\sigma}\right)$$
 
-$$F(v) = H\left(\frac{v-\mu}{\sigma}\right)$$
+**Demostración:**
 
-### Demostración Matemática Formal
+Iniciamos con la definición de la función de distribución acumulativa para la nueva variable aleatoria $V$, denotada como $F(v)$. Por definición, esta es la probabilidad de que $V$ tome un valor menor o igual a $v$:
 
-*(Desarrollo matemático en construcción)*
+$$F(v) = \Pr(V \leq v)$$
+
+Sustituimos la definición de $V = \mu + \sigma U$ en la expresión anterior:
+
+$$F(v) = \Pr(\mu + \sigma U \leq v)$$
+
+Despejamos $U$ de la desigualdad. Dado que, por definición, $\sigma > 0$, el sentido de la desigualdad se mantiene al dividir por $\sigma$:
+
+$$F(v) = \Pr(\sigma U \leq v - \mu)$$
+$$F(v) = \Pr\left(U \leq \frac{v - \mu}{\sigma}\right)$$
+
+Por definición, la probabilidad de que la variable aleatoria $U$ sea menor o igual a un valor dado es su función de distribución acumulativa $H(\cdot)$ evaluada en ese valor. Por lo tanto:
+
+$$F(v) = H\left(\frac{v - \mu}{\sigma}\right)$$
+
+Con esto queda demostrada la expresión para la función de distribución acumulativa.
+
+Ahora derivaremos la función de densidad de probabilidad $f(v)$. Por definición, la función de densidad es la derivada con respecto a $v$ de la función de distribución acumulativa $F(v)$:
+
+$$f(v) = \frac{d}{dv} F(v) = \frac{d}{dv} \left[ H\left(\frac{v - \mu}{\sigma}\right) \right]$$
+
+Para derivar esta expresión aplicamos la regla de la cadena:
+
+$$f(v) = H'\left(\frac{v - \mu}{\sigma}\right) \cdot \frac{d}{dv} \left( \frac{v - \mu}{\sigma} \right)$$
+
+Sabemos que la derivada de la función de distribución acumulativa $H(\cdot)$ es su función de densidad $h(\cdot)$, es decir, $H'(u) = h(u)$. Además, la derivada del argumento interno con respecto a $v$ es $\frac{1}{\sigma}$:
+
+$$f(v) = h\left(\frac{v - \mu}{\sigma}\right) \cdot \frac{1}{\sigma}$$
+$$f(v) = \frac{1}{\sigma} \cdot h\left(\frac{v - \mu}{\sigma}\right)$$
+
+Con esto concluimos la demostración. Queda demostrado que la familia de distribuciones descrita por $V$ es de locación-escala, con parámetro de locación $\mu$ y parámetro de escala $\sigma$.
